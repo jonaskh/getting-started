@@ -66,6 +66,7 @@ async function getItem(id) {
         });
     });
 }
+module.exports = getItem;
 
 async function storeItem(item) {
     return new Promise((acc, rej) => {

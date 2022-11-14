@@ -82,7 +82,9 @@ async function getItem(id) {
             );
         });
     });
+
 }
+
 
 async function storeItem(item) {
     return new Promise((acc, rej) => {
