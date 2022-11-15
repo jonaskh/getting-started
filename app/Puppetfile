@@ -1,0 +1,10 @@
+3  services:
+4    jenkins:
+5      image: jenkins/jenkins:lts
+6      privileged: true
+7      user: root
+8      ports:
+9       - 8080:8080
+10      - 50000:50000
+11    container_name: jenkins
+12    volumes:
