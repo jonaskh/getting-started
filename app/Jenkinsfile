@@ -1,0 +1,45 @@
+pipeline {
+    environment {
+    registry = "jonaskh/todo-app"
+    registryCredential = 'dockerhub'
+    dockerImage = 'jonaskh/todo-app' //need fix
+    }
+
+    agent any
+    stages {
+            stage('Cloning our Git') {
+                steps {
+                git 'https://github.com/jonaskh/getting-started.git'
+                }
+            }
+
+            stage('Building Docker Image') {
+                steps {
+                    script {
+                        step (
+                            [$class: 'DockerComposeBuilder', dockerComposeFile: 'docker-compose.yml', option: [$class: 'StartAllServices'], useCustomDockerComposeFile: true]
+                        )
+                    }
+                }
+            }
+
+              //this stage fails
+            stage('Deploying Docker Image to Dockerhub') {
+                steps {
+                    script {
+                        step (
+                            docker.withRegistry('', registryCredential) {
+                                dockerImage.push()
+                        }
+                    )
+                    }
+                }
+            }
+
+            stage('Cleaning Up') {
+                steps{
+                  sh "docker rmi --force $registry:$BUILD_NUMBER"
+                }
+            }
+        }
+    }
