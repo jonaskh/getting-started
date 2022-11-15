@@ -14,7 +14,7 @@ services:
       MYSQL_DB: todos
 
 
-        #mysql db used for the application data80
+  #mysql db used for the application data80
   mysql:
     image: mysql:5.7
     volumes:
