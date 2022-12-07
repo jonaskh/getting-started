@@ -1,0 +1,9 @@
+<component name="libraryTable">
+  <library name="concurrent_ruby">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/app/puppet/serverdata/vendored-jruby-gems/gems/concurrent-ruby-1.1.5/lib/concurrent/concurrent_ruby.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>
